@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Job Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+    <a href="login.html">login</a>|
+    <a href="register.html">register</a>|
+    <a href="about.html">About Us</a>|
+    <a href="contact.html">Contact Us</a>|
+</nav>
+<hr>
+    <h1>job portal</h1>
+    <p>Welcome to the Job Portal. Find your dream job here!</p>
+
+<hr>
+
+<section class="search-section">
+    <h2>Search your dream job</h2>
+    <div class="search bar">
+        <select id="job-category" class="input-field">
+            <option value="all">all catogaries</option>
+            <option value="it">IT</option>
+            <option value="finance">Finance</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="education">Education</option>
+            <option value="full-stack">full stack developer</option>
+        </select>
+
+        <input type="text" id="skills" class="input-field" placeholder="Enter your skills (comma separated)">
+        <input type="text" id="location" class="input-field" placeholder="Enter City or Country">
+        <button onclick="revealJobs()" class="search-btn">Search Jobs 🚀</button>
+
+
+
+    </div>
+</section>
+<hr>
+
+<section id="job-results" class="result-section" style="display: none;">
+    <h2>Available jobs</h2>
+    <div class="job-list">
+            <div class="job-card">
+                <h4>Frontend Developer 🎨💻</h4>
+                <p><strong>Tech Innovators</strong> | 📍 Bangalore</p>
+                <p>Required: HTML, CSS, Basic JavaScript.</p>
+                <button class="apply-btn">Apply 💌</button>
+            </div>
+
+            <div class="job-card">
+                <h4>Digital Marketer 📱📈</h4>
+                <p><strong>AdSpace Inc.</strong> | 📍 Remote</p>
+                <p>Required: SEO, Social Media Management.</p>
+                <button class="apply-btn">Apply 💌</button>
+            </div>
+
+            
+        </div>
+</section>
+<script>
+        // This function runs when the Search button is clicked! ⚙️✨
+        function revealJobs() {
+            // It finds the results section and changes its display from 'none' to 'block'
+            document.getElementById("job-results").style.display = "block";
+        }
+</script>
+<footer>
+        <p>Designed with ❤️ by You | © 2024 JobHunt</p>
+    </footer>
+</body>
+</html>
