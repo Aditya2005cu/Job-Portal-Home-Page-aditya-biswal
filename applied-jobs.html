@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Applications 📋🚀</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <nav class="top-navbar">
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="index.html">Home</a> <a href="applied-jobs.html">My Applications</a> <a href="login.html">Login</a>
+    </nav>
+    <hr>
+    
+    <h1>My Dashboard 📊</h1>
+    <p>Track the status of your dream jobs below!</p>
+    <hr>
+
+    <section class="results-section" style="max-width: 800px; margin: 40px auto;">
+        <h2>Jobs You've Applied For 💌</h2>
+        <div id="applications-list" style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+        </div>
+    </section>
+
+    <footer>
+        <p>Designed by Aditya | © 2024 JobHunt</p>
+    </footer>
+
+    <script>
+        function loadApplications() {
+            const container = document.getElementById("applications-list");
+            // Pull the data out of browser memory
+            const appliedJobs = JSON.parse(localStorage.getItem("myApplications")) || [];
+
+            if (appliedJobs.length === 0) {
+                container.innerHTML = "<h3>You haven't applied to any jobs yet! Go back to the Home page to start your search! 🕵️‍♂️</h3>";
+                return;
+            }
+
+            // Loop through and display each application
+            appliedJobs.forEach(job => {
+                // We use a little logic to color-code the status! 🎨
+                let statusColor = "#ffa500"; // Orange for review
+                if (job.status === "Accepted 🎉") statusColor = "#29d107";
+                if (job.status === "Rejected ❌") statusColor = "#cf0833";
+
+                const appHTML = `
+                    <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px; background-color: #fafafa; text-align: left;">
+                        <h3 style="margin: 0; color: #333;">${job.title}</h3>
+                        <p style="color: #666; margin: 5px 0;"><strong>${job.company}</strong> | 📍 ${job.location}</p>
+                        <hr style="border-top: 1px solid #eee; margin: 10px 0;">
+                        <p style="margin: 5px 0;"><strong>Date Applied:</strong> ${job.dateApplied}</p>
+                        <p style="margin: 5px 0;"><strong>Application Status:</strong> 
+                            <span style="color: white; background-color: ${statusColor}; padding: 4px 10px; border-radius: 12px; font-weight: bold; font-size: 14px;">
+                                ${job.status}
+                            </span>
+                        </p>
+                    </div>
+                `;
+                container.innerHTML += appHTML;
+            });
+        }
+
+        // Run this function immediately when the page loads!
+        window.onload = loadApplications;
+    </script>
+</body>
+</html>
